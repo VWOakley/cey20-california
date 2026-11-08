@@ -59,27 +59,29 @@ from the water-relative Magnus form of the CEY20 builder, exposure counts, annua
 comparisons) and compares the result with the published `point_metrics.csv`, listing per column how
 many points differ and by how much.
 
-### Expected result: very small differences, not an exact match
+### Observed CDS result on 8 November 2026: small differences
 
-The dataset was built from the global ERA5-Land GRIB files. A CDS request for a small area returns the
-same fields re-encoded by the CDS, with values that differ from the global files by up to about
-0.0002 K. After packing to hundredths of a degree, about 1 % of the hourly temperatures and 0.5 % of
-the dew points therefore differ by 0.01 °C (checked on one month).
+The dataset was built from the global ERA5-Land GRIB files. The checked CDS area requests, in both
+NetCDF and GRIB formats, returned re-encoded fields whose values differed from the global files by up
+to 0.00023 K. After applying the dataset's packing rule, about 1 % of temperature values and 0.5 % of
+dew-point values differed by 0.01 °C in one checked month.
 
 Measured on 8 November 2026 with all 240 months from the CDS:
 
 | Published column | Points that differ (of 711) | Largest difference |
 |---|---|---|
 | `*_h_ref`, `*_signed_h` (mean annual hours of the 20 years) | 394-425 per metric | 0.45 h per year |
-| `*_abs_rel_error` | 394-425 per metric | 0.0014 (0.14 percentage points) |
+| `*_abs_rel_error` | 394-425 per metric | 0.00144 (dimensionless; equivalent to 0.144 percentage points) |
 | `d_temperature_c_mMM`, `max_abs_d_temperature_c` | up to all | 0.00016 °C |
 | `d_rh_pct_mMM`, `max_abs_d_rh_pct` | up to all | 0.00044 percentage points |
 | `months_within_t` | 1 (point index 141804) | 1 month (July: -0.50003 °C published, -0.49993 °C recomputed, limit 0.5 °C) |
 | `*_within_5pct`, `*_h_selected`, `months_within_rh`, completeness flags | none | – |
 
-`metrics` therefore ends with exit code 1 on the CDS route. Recomputed from the packed values of the
-global files, the same code reproduces `point_metrics.csv` exactly (all 711 points); those packed
-values are not distributed.
+In the full CDS run checked on 8 November 2026, `metrics` ended with exit code 1 because of these
+differences. Recomputed from the packed values of the global files, the same code reproduces the
+published `point_metrics.csv` for all 711 points, with `cell_fraction_in_california` compared to a
+tolerance of 1e-6 because it is stored as float32 in the NetCDF; all other columns match exactly. Those
+packed values are not distributed.
 
 These metrics describe how the reference year compares with the 20 actual years of the same
 reanalysis. They are not a validation against observations.

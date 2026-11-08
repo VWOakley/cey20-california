@@ -3,7 +3,7 @@
 The published metrics were computed against ERA5-Land hourly 2 m temperature and dew point stored as
 int16 hundredths of a degree Celsius. This module rebuilds that input with the same rules from the
 Copernicus Climate Data Store (CDS). The CDS re-encodes area requests, so a few packed values differ by
-0.01 degC from those of the global files (see README, "Expected result"):
+0.01 degC from those of the global files (see README, "Observed CDS result"):
 
 1. Each dataset point (a 0.25 degree grid point) takes the nearest native ERA5-Land 0.1 degree grid point:
    row = rint((90 - lat) / 0.1), column = rint((lon mod 360) / 0.1) (NumPy round-half-to-even).
