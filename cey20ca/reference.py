@@ -134,7 +134,10 @@ def build_cache(lat: np.ndarray, lon: np.ndarray, cache: Path, downloads: Path, 
             part.replace(raw)
         packed = sample_month(raw, rows, cols, year, month)
         digest = hashlib.sha256(raw.read_bytes()).hexdigest()
-        np.savez_compressed(target, t2m=packed["t2m"], d2m=packed["d2m"], source_sha256=digest)
+        part = target.with_suffix(".npz.part")
+        with open(part, "wb") as handle:  # a file handle keeps numpy from appending ".npz"
+            np.savez_compressed(handle, t2m=packed["t2m"], d2m=packed["d2m"], source_sha256=digest)
+        part.replace(target)
         print(f"packed {year}-{month:02d}", flush=True)
 
     with ThreadPoolExecutor(max_workers=max(1, workers)) as pool:
