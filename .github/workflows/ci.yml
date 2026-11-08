@@ -1,0 +1,20 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pytest -q
+      - name: Download the dataset from Zenodo and verify checksums
+        run: python -m cey20ca download
+      - name: Run the getting-started notebook
+        run: jupyter nbconvert --to notebook --execute notebooks/getting-started.ipynb --output /tmp/executed.ipynb

@@ -1,0 +1,6 @@
+data/
+reference/
+point_metrics_recomputed.csv
+__pycache__/
+.ipynb_checkpoints/
+.pytest_cache/

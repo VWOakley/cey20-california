@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the dataset it belongs to (preferred citation)."
+title: "CEY20 v2 California exposure reference year: tools"
+version: 1.0.0
+license: MIT
+type: software
+authors:
+  - family-names: Okley
+    given-names: Wadim
+    affiliation: Independent researcher
+repository-code: "https://github.com/VWOakley/cey20-california"
+keywords:
+  - ERA5-Land
+  - reference year
+  - humidity
+  - California
+preferred-citation:
+  type: dataset
+  title: "CEY20 v2 exposure reference year: California (0.25 degree), dataset v1.0.0"
+  authors:
+    - family-names: Okley
+      given-names: Wadim
+  year: 2026
+  publisher:
+    name: Zenodo
+  doi: 10.5281/zenodo.24016356
+  license: CC-BY-4.0
