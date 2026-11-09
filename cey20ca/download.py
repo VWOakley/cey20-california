@@ -38,6 +38,20 @@ def fetch(target: Path) -> list[Path]:
     return paths
 
 
+def extract_counties(target: Path) -> int:
+    """Unpack counties.zip next to it (``counties/<geoid>_<name>.csv``, as listed in counties_index.csv)."""
+    import zipfile
+
+    target = Path(target).resolve()
+    with zipfile.ZipFile(target / "counties.zip") as archive:
+        names = archive.namelist()
+        for name in names:
+            if not (target / name).resolve().is_relative_to(target):
+                raise ValueError(f"counties.zip: unexpected path {name}")
+        archive.extractall(target)
+    return len(names)
+
+
 def verify(target: Path) -> dict[str, bool]:
     """SHA-256 of every package file against manifest.json (``output_sha256``)."""
     target = Path(target)

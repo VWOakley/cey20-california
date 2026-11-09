@@ -109,3 +109,17 @@ def test_summarize_counts_points_and_largest_difference(tmp_path):
     assert compute.summarize(published, rows) == []
     new = [{"point_index": 1, "x": 0.75, "flag": False}, {"point_index": 2, "x": 1.25, "flag": False}]
     assert compute.summarize(published, new) == ["x: 2 points, max |difference| 0.25", "flag: 1 points"]
+
+
+def test_extract_counties_unpacks_and_rejects_escaping_paths(tmp_path):
+    import zipfile
+    from cey20ca import download
+
+    with zipfile.ZipFile(tmp_path / "counties.zip", "w") as archive:
+        archive.writestr("counties/06001_Alameda.csv", "x\n1\n")
+    assert download.extract_counties(tmp_path) == 1
+    assert (tmp_path / "counties" / "06001_Alameda.csv").read_text() == "x\n1\n"
+    with zipfile.ZipFile(tmp_path / "counties.zip", "w") as archive:
+        archive.writestr("../evil.csv", "x\n")
+    with pytest.raises(ValueError):
+        download.extract_counties(tmp_path)

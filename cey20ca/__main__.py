@@ -27,6 +27,7 @@ def main(argv=None) -> int:
     if args.command == "download":
         download.fetch(args.data)
         print(f"verified {len(download.verify(args.data))} files against manifest.json")
+        print(f"unpacked {download.extract_counties(args.data)} county files from counties.zip")
         return 0
     nc_path = args.data / "cey20_v2_california_points.nc"
     if args.command == "reference":
