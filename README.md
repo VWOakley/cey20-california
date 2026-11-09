@@ -107,6 +107,12 @@ Please cite the dataset:
 > Okley, W. (2026): CEY20 v2 exposure reference year: California (0.25 degree), dataset v1.0.0.
 > Zenodo. https://doi.org/10.5281/zenodo.24016356
 
+The dataset is described in the data descriptor (preprint):
+
+> Okley, W. (2026): CEY20 v2 exposure reference year for California: an hourly temperature and humidity
+> dataset at 0.25° from ERA5-Land 2006–2025. Data descriptor, version 1.0. Zenodo.
+> https://doi.org/10.5281/zenodo.24073751
+
 To cite this code, use doi:10.5281/zenodo.24073640 (all versions; v1.0.0: doi:10.5281/zenodo.24073641).
 `CITATION.cff` contains its citation metadata.
 
