@@ -8,6 +8,7 @@ authors:
   - family-names: Okley
     given-names: Wadim
     affiliation: Independent researcher
+doi: 10.5281/zenodo.24073640
 repository-code: "https://github.com/VWOakley/cey20-california"
 keywords:
   - ERA5-Land

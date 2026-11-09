@@ -1,6 +1,7 @@
 # CEY20 v2 California exposure reference year: tools
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24016356.svg)](https://doi.org/10.5281/zenodo.24016356)
+Dataset: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24016356.svg)](https://doi.org/10.5281/zenodo.24016356)
+Code: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24073640.svg)](https://doi.org/10.5281/zenodo.24073640)
 
 Code to download, verify and use the dataset **CEY20 v2 exposure reference year: California
 (0.25 degree), dataset v1.0.0** ([doi:10.5281/zenodo.24016356](https://doi.org/10.5281/zenodo.24016356)),
@@ -106,7 +107,8 @@ Please cite the dataset:
 > Okley, W. (2026): CEY20 v2 exposure reference year: California (0.25 degree), dataset v1.0.0.
 > Zenodo. https://doi.org/10.5281/zenodo.24016356
 
-`CITATION.cff` contains the citation metadata of this code.
+To cite this code, use doi:10.5281/zenodo.24073640 (all versions; v1.0.0: doi:10.5281/zenodo.24073641).
+`CITATION.cff` contains its citation metadata.
 
 ## Licences
 
