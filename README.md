@@ -99,6 +99,8 @@ reanalysis. They are not a validation against observations.
 | `tests/` | Unit tests of the definitions and the packing rule |
 
 The CEY20 month selection itself is not part of this repository.
+It is described at https://www.getclimetry.com/methodology#cey20 and in the CEY20 study package
+([doi:10.5281/zenodo.24091411](https://doi.org/10.5281/zenodo.24091411)).
 
 ## Citation
 
